@@ -1,4 +1,17 @@
-<% @boards.each do |board| %>
-  <%= board.name %>
-  <hr />
+<% @categories.each do |category| %>
+  <div id="board-category-<%= category.id %>" class="board-category card">
+    <div class="board-category-name card-header">
+      <%= category.name %>
+    </div>
+    <% if category.boards? %>
+      <ul class="boards-list list-group list-group-flush">
+        <% category.boards.order(position: :asc).each do |board| %>
+          <li id="board-<%= board.id %>" class="board list-group-item">
+            <span class="card-text"><%= board.name %></span><br />
+            <span class="card-text"><small class="text-muted"><%= board.description %></small></span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div><br />
 <% end %>

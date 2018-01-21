@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121184208) do
+ActiveRecord::Schema.define(version: 20180121191706) do
 
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.text "description"
+    t.integer "parent_id"
     t.string "external_url"
     t.boolean "category", default: false, null: false
     t.integer "position", default: 1, null: false
