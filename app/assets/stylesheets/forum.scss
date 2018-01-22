@@ -1,11 +1,26 @@
 body {
-  padding: 20pt;
+  background-color: #f5f5f5;
 }
 
-.board-category {
-  background-color: #636363;
+#content {
+  background-color: #ffffff;
+  padding: 20pt;
 
-  .board-category-name {
-    color: #ffffff;
+  .board-category {
+    background-color: #636363;
+
+    .board-category-name {
+      color: #ffffff;
+    }
+  }
+}
+
+#footer {
+  border-top: 1px solid #000000;
+  padding-top: 10pt;
+  font-size: 13px;
+
+  #copyright {
+    text-align: center;
   }
 }
