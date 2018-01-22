@@ -1,0 +1,19 @@
+<% if @threads.empty? %>
+  <div class="alert alert-info"> There are no topics created in this board. </div>
+<% else %>
+  <div class="thread-category card">
+    <div class="thread-category-name card-header">
+      Threads
+    </div>
+    <ul class="boards-list list-group list-group-flush">
+      <% @threads.each do |thread| %>
+        <li id="thread-<%= thread.id %>" class="thread list-group-item">
+          <div class="row">
+            <div class="col-sm-8"><%= thread.title %></div>
+            <div class="col-sm-4"><%= I18n.l thread.created_at %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

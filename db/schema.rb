@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121191706) do
+ActiveRecord::Schema.define(version: 20180122203115) do
+
+  create_table "board_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.integer "board_id"
+    t.integer "user_id"
+    t.string "username"
+    t.boolean "user_deleted", default: false, null: false
+    t.boolean "sticky", default: false, null: false
+    t.boolean "announcement", default: false, null: false
+    t.boolean "closed", default: false, null: false
+    t.boolean "disabled", default: false, null: false
+    t.boolean "deleted", default: false, null: false
+    t.integer "deleted_by_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
