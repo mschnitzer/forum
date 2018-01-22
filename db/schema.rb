@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122203115) do
+ActiveRecord::Schema.define(version: 20180122203811) do
 
   create_table "board_threads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -36,6 +36,28 @@ ActiveRecord::Schema.define(version: 20180122203115) do
     t.string "external_url"
     t.boolean "category", default: false, null: false
     t.integer "position", default: 1, null: false
+  end
+
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.boolean "default_group", default: false, null: false
+    t.boolean "guest_group", default: false, null: false
+  end
+
+  create_table "user_to_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.index ["user_id", "group_id"], name: "index_user_to_groups_on_user_id_and_group_id", unique: true
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
