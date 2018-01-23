@@ -1,0 +1,32 @@
+<%= form_tag users_register_path do %>
+  <div class="card">
+    <div class="card-header">
+      <strong><%= t(:title_register_account) %></strong>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= label_tag :username, t(:field_username) %>
+        <%= text_field_tag :username, params[:username], class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :email, t(:field_email) %>
+        <%= text_field_tag :email, params[:email], class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :email_confirmation, t(:field_email_confirmation) %>
+        <%= text_field_tag :email_confirmation, params[:email_confirmation], class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password, t(:field_password) %>
+        <%= password_field_tag :password, nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password_confirmation, t(:field_password_confirmation) %>
+        <%= password_field_tag :password_confirmation, nil, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= submit_tag t(:button_create_account), class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+<% end %>
