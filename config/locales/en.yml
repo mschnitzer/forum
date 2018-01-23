@@ -16,5 +16,6 @@ en:
   flash_account_registered_successfully: 'Your account has been created successfully.'
   flash_account_registration_error: 'Could not create new user account: %{error}'
 
-  # user cp navigation items
+  # user cp navigation
+  ucp_logged_in_as: 'Logged in as %{username}.'
   ucp_title_register: 'Create Account'

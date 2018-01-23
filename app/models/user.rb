@@ -9,6 +9,14 @@ class User < ApplicationRecord
 
   after_create :set_default_group
 
+  def self.current=(user)
+    Thread.current[:user] = user if user.nil? || user.is_a?(User)
+  end
+
+  def self.current
+    Thread.current[:user]
+  end
+
   private
 
   def set_default_group

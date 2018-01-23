@@ -1,3 +1,7 @@
 <div id="user-cp">
-  <%= link_to t(:ucp_title_register), users_new_path %>
+  <% if User.current %>
+    <%= t(:ucp_logged_in_as, username: User.current.username) %>
+  <% else %>
+    <%= link_to t(:ucp_title_register), users_new_path %>
+  <% end %>
 </div>
