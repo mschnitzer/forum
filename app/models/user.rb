@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :user_to_groups
+  has_many :user_to_groups, dependent: :destroy
   has_many :groups, through: :user_to_groups
 
   after_create :set_default_group
