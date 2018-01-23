@@ -8,4 +8,8 @@ class Board < ApplicationRecord
   def boards?
     boards.count > 0
   end
+
+  def to_param
+    [id, name.parameterize].join("-")
+  end
 end

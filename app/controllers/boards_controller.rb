@@ -4,8 +4,13 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find_by(id: params[:id])
+    @board = Board.find_by(id: params[:board].to_i)
     not_found unless @board
+
+    if @board.to_param != params[:board]
+      redirect_to boards_show_path(@board)
+      return
+    end
 
     @threads = @board.threads
   end
