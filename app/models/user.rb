@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def guest?
-    username == 'Guest'
+    username.casecmp('Guest') == 0
   end
 
   def logged_in?
