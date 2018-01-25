@@ -2,6 +2,10 @@
   <% if User.current.logged_in? %>
     <%= t(:ucp_logged_in_as, username: User.current.username) %>
   <% else %>
-    <%= link_to t(:ucp_title_register), users_new_path %>
+    <span class="item"><%= link_to t(:ucp_title_register), users_new_path %></span>
   <% end %>
+</div>
+
+<div id="header">
+  <%= link_to 'Open Source Forum', root_path %>
 </div>
