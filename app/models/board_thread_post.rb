@@ -1,11 +1,11 @@
-class BoardThread < ApplicationRecord
+class BoardThreadPost < ApplicationRecord
   validates :title, presence: true
+  validates :message, presence: true
   validate :user_id_or_username_validation
 
-  belongs_to :board
+  belongs_to :thread, class_name: 'BoardThread', optional: true
   belongs_to :user, optional: true
   belongs_to :deleted_by, class_name: 'User', optional: true
-  has_many :posts, class_name: 'BoardThreadPost', foreign_key: :thread_id
 
   private
 

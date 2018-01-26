@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :groups, through: :user_to_groups
 
   after_create :set_default_group
+  after_destroy :invalidate_board_thread_relations
 
   @@guest = nil
 
@@ -44,5 +45,9 @@ class User < ApplicationRecord
     if username.casecmp('guest') == 0
       errors.add(:username, "cannot be 'Guest'")
     end
+  end
+
+  def invalidate_board_thread_relations
+    BoardThread.where(user_id: id).update_all(user_id: nil, username: username, user_deleted: true)
   end
 end

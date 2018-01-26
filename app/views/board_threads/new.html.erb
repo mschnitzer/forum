@@ -1,0 +1,26 @@
+<%= form_tag board_threads_create_path(@board) do %>
+  <div class="card">
+    <div class="card-header">
+      <strong><%= t(:title_board_thread_new, board: @board.name) %></strong>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= label_tag :title, t(:field_title) %>
+        <%= text_field_tag :title, params[:title], class: 'form-control' %>
+      </div>
+      <% if User.current.guest? %>
+        <div class="form-group">
+          <%= label_tag :username, t(:field_username) %>
+          <%= text_field_tag :username, params[:username], class: 'form-control' %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= label_tag :message, t(:field_message) %>
+        <%= text_area_tag :message, params[:message], class: 'form-control', style: 'height: 300px;' %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= submit_tag t(:button_thread_create), class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+<% end %>
