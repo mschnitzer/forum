@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126174314) do
+ActiveRecord::Schema.define(version: 20180126174317) do
 
   create_table "board_thread_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "thread_id"
@@ -59,6 +59,25 @@ ActiveRecord::Schema.define(version: 20180126174314) do
     t.string "name_format", default: "%s"
     t.boolean "default_group", default: false, null: false
     t.boolean "guest_group", default: false, null: false
+  end
+
+  create_table "permission_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "permission_to_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "permission_id"
+    t.integer "group_id"
+    t.text "value", limit: 16777215
+    t.index ["group_id", "permission_id"], name: "index_permission_to_groups_on_group_id_and_permission_id", unique: true
+  end
+
+  create_table "permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category_id"
+    t.integer "value_type"
+    t.text "default_value", limit: 16777215
   end
 
   create_table "user_to_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

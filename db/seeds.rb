@@ -4,3 +4,8 @@ Group.create!([
   { name: 'Registered Users', default_group: true },
   { name: 'Guests', guest_group: true }
 ])
+PermissionCategory.create!([
+  { name: 'Administration' },
+  { name: 'Moderation' },
+  { name: 'General' }
+])
