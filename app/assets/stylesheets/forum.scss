@@ -49,50 +49,87 @@ body {
 #content {
   background-color: #ffffff;
   padding: 20pt;
+}
 
-  .board-category {
-    background-color: #002768;
-    -webkit-box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
-    -moz-box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
-    box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
+.box {
+  @extend .card;
+
+  .header {
+    @extend .card-header;
 
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
 
-    .board-category-name {
-      color: #ffffff;
-      font-weight: bold;
-      letter-spacing: 1.2px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    background-color: #002768;
 
-      border-left: 1px solid #002768;
-      border-right: 1px solid #002768;
-      border-bottom: 1px solid #002768;
-    }
+    border-left: 1px solid #002768;
+    border-right: 1px solid #002768;
+    border-bottom: 1px solid #002768;
+  }
 
-    .board {
-      border-left: 1px solid #e5e4e3;
-      border-right: 1px solid #e5e4e3;
-      border-bottom: 1px solid #e5e4e3;
+  .body {
+    @extend .card-body;
+  }
+}
 
-      .board-description {
-        font-size: 15px;
-      }
-    }
+.box-shadow {
+  @extend .card;
 
-    .board-name {
-      font-size: 20px;
+  -webkit-box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
+  -moz-box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
+  box-shadow: 1px 10px 20px -9px rgba(0,0,0,0.63);
 
-      a:link, a:visited {
-        color: #e86502;
-        text-decoration: none;
-      }
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
 
-      a:active, a:hover {
-        color: #a34701;
-        text-decoration: none;
-      }
-    }
+  .header {
+    @extend .card-header;
+
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    background-color: #002768;
+
+    border-left: 1px solid #002768;
+    border-right: 1px solid #002768;
+    border-bottom: 1px solid #002768;
+  }
+
+  .body {
+    @extend .card-body;
+  }
+}
+
+.boards {
+  border-left: 1px solid #e5e4e3;
+  border-right: 1px solid #e5e4e3;
+  border-bottom: 1px solid #e5e4e3;
+}
+
+.board-description {
+  font-size: 15px;
+}
+
+.board-name {
+  font-size: 20px;
+
+  a:link, a:visited {
+    color: #e86502;
+    text-decoration: none;
+  }
+
+  a:active, a:hover {
+    color: #a34701;
+    text-decoration: none;
   }
 }
 

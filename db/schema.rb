@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125163256) do
+ActiveRecord::Schema.define(version: 20180126174314) do
 
   create_table "board_thread_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "thread_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180125163256) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
+    t.string "name_format", default: "%s"
     t.boolean "default_group", default: false, null: false
     t.boolean "guest_group", default: false, null: false
   end

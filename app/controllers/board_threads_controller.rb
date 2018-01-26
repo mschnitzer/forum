@@ -2,7 +2,7 @@ class BoardThreadsController < ApplicationController
   before_action :check_board
   before_action :check_board_name, except: [:create]
 
-  def new
+  def new 
   end
 
   def create
