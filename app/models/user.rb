@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :user_to_groups, dependent: :destroy
   has_many :groups, through: :user_to_groups
 
+  has_many :board_permission_to_targets, dependent: :destroy
+
   after_create :set_default_group
   after_destroy :invalidate_board_thread_relations
 

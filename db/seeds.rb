@@ -9,3 +9,6 @@ PermissionCategory.create!([
   { name: 'Moderation' },
   { name: 'General' }
 ])
+BoardPermission.create!([
+  { name: 'can_access_board', default_value: true }
+])

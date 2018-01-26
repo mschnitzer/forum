@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126174317) do
+ActiveRecord::Schema.define(version: 20180126174319) do
+
+  create_table "board_permission_to_targets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "permission_id"
+    t.integer "board_id"
+    t.integer "group_id"
+    t.integer "user_id"
+    t.boolean "value", null: false
+    t.index ["permission_id", "board_id", "group_id"], name: "index_unique_board_and_group", unique: true
+    t.index ["permission_id", "board_id", "user_id"], name: "index_unique_board_and_user", unique: true
+  end
+
+  create_table "board_permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.boolean "default_value", null: false
+  end
 
   create_table "board_thread_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "thread_id"
