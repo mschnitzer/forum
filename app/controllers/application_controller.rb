@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include Pundit
 
   protect_from_forgery with: :exception
   around_action :catch_halt

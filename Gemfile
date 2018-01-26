@@ -35,6 +35,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'sprockets-rails', '~> 3.2.1'
 # jquery-rails
 gem 'jquery-rails'
+# permission handling
+gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
