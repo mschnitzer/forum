@@ -27,3 +27,9 @@ en:
 
   # general
   permission_denied_error: 'You have insufficient permission to access that resource.'
+
+  # threads
+  threads: 'Threads'
+  thread_title: 'Title'
+  thread_last_answer: 'Last Answer'
+  thread_answers: 'Answers'

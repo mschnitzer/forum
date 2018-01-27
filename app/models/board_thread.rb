@@ -7,6 +7,18 @@ class BoardThread < ApplicationRecord
   belongs_to :deleted_by, class_name: 'User', optional: true
   has_many :posts, class_name: 'BoardThreadPost', foreign_key: :thread_id
 
+  def author_name
+    username ? username : user.username
+  end
+
+  def last_answer
+    posts_without_thread_starter.order(id: :desc).limit(1).first
+  end
+
+  def posts_without_thread_starter
+    posts.where(thread_starter: false)
+  end
+
   private
 
   def user_id_or_username_validation

@@ -3,17 +3,28 @@
 <% else %>
   <div class="thread-category card">
     <div class="thread-category-name card-header">
-      Threads
+      <span class="badge badge-secondary badge-pill threads-count"><%= @threads_count %></span> <strong><%= I18n.t :threads %></strong>
     </div>
-    <ul class="boards-list list-group list-group-flush">
-      <% @threads.each do |thread| %>
-        <li id="thread-<%= thread.id %>" class="thread list-group-item">
-          <div class="row">
-            <div class="col-sm-8"><%= thread.title %></div>
-            <div class="col-sm-4"><%= I18n.l thread.created_at %></div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th><%= I18n.t :thread_title %></th>
+          <th><%= I18n.t :thread_answers %></th>
+          <th><%= I18n.t :thread_last_answer %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @threads.each do |thread| %>
+          <tr>
+            <td>
+              <%= thread.title %><br />
+              <span class="info-text thread-created-info"><%= thread.author_name %> -- <%= I18n.l thread.created_at %></span>
+            </td>
+            <td><span class="thread-answers-count"><%= thread.posts_without_thread_starter.count %></span></td>
+            <td><%= thread.last_answer ? I18n.l(thread.last_answer.created_at) : '-' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 <% end %>

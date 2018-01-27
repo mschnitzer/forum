@@ -15,5 +15,6 @@ class BoardsController < ApplicationController
     end
 
     @threads = @board.threads
+    @threads_count = @board.threads.count
   end
 end
