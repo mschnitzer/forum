@@ -1,17 +1,21 @@
 <% @categories.each do |category| %>
-  <div id="board-category-<%= category.id %>" class="box-shadow board-category">
-    <div class="header">
-      <%= category.name %>
-    </div>
-    <% if category.boards? %>
-      <ul class="list-group list-group-flush">
-        <% category.boards.order(position: :asc).each do |board| %>
-          <li id="board-<%= board.id %>" class="boards list-group-item">
-            <span class="board-name card-text"><%= link_to board.name, boards_show_path(board) %></span><br />
-            <span class="board-description card-text"><small class="text-muted"><%= board.description %></small></span>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div><br />
+  <% if policy(category).show? %>
+    <div id="board-category-<%= category.id %>" class="box-shadow board-category">
+      <div class="header">
+        <%= category.name %>
+      </div>
+      <% if category.boards? %>
+        <ul class="list-group list-group-flush">
+          <% category.boards.order(position: :asc).each do |board| %>
+            <% if policy(board).show? %>
+              <li id="board-<%= board.id %>" class="boards list-group-item">
+                <span class="board-name card-text"><%= link_to board.name, boards_show_path(board) %></span><br />
+                <span class="board-description card-text"><small class="text-muted"><%= board.description %></small></span>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div><br />
+  <% end %>
 <% end %>

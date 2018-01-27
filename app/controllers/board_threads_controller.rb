@@ -3,6 +3,7 @@ class BoardThreadsController < ApplicationController
   before_action :check_board_name, except: [:create]
 
   def new 
+    authorize @board.threads.new
   end
 
   def create
@@ -11,6 +12,8 @@ class BoardThreadsController < ApplicationController
       user: User.current.logged_in? ? User.current : nil,
       username: User.current.guest? ? params[:username] : nil,
     )
+
+    authorize thread
 
     if thread.valid?
       post = thread.posts.new(

@@ -24,3 +24,6 @@ en:
   # user cp navigation
   ucp_logged_in_as: 'Logged in as %{username}.'
   ucp_title_register: 'Create Account'
+
+  # general
+  permission_denied_error: 'You have insufficient permission to access that resource.'
