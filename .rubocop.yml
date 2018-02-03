@@ -4,3 +4,21 @@ AllCops:
   MaxFilesInCache: 2000
   Exclude:
     - 'tmp/**/*'
+    - 'db/**/*'
+    - 'bin/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 150
+  IgnoredPatterns: ['\A#']
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 25
+
+Style/ClassVars:
+  Enabled: false
