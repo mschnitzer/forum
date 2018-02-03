@@ -34,6 +34,9 @@ class BoardThreadsController < ApplicationController
         post.save!
 
         flash.now[:success] = "The thread has been created successfully."
+
+        redirect_to board_threads_show_path(@board, thread)
+        return
       else
         flash.now[:error] = I18n.t :flash_board_thread_create_error, error: post.errors.full_messages.to_sentence
       end
