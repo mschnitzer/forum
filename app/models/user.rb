@@ -22,15 +22,13 @@ class User < ApplicationRecord
   def self.current
     return Thread.current[:user] if Thread.current[:user].is_a?(User)
 
-    unless @@guest
-      @@guest = User.new(username: 'Guest')
-    end
+    @@guest ||= User.new(username: 'Guest')
 
     @@guest
   end
 
   def guest?
-    username.casecmp('Guest') == 0
+    username.casecmp('Guest').zero?
   end
 
   def logged_in?
@@ -41,14 +39,13 @@ class User < ApplicationRecord
     permission = Permission.find_by(name: permission_name.to_s)
     raise "permission '#{permission_name}' was not found in database" unless permission
 
-    if permission.value_type == 'boolean'
-      groups.each do |group|
-        group_permission = group.permission_to_groups.find_by(permission_id: permission.id)
-        return true if group_permission && group_permission.value == "true"
-      end
-
-      return false
+    return unless permission.value_type == 'boolean'
+    groups.each do |group|
+      group_permission = group.permission_to_groups.find_by(permission_id: permission.id)
+      return true if group_permission && group_permission.value == 'true'
     end
+
+    false
   end
 
   def board_permission?(board, permission_name)
@@ -62,7 +59,7 @@ class User < ApplicationRecord
     # group permissions
     group_permissions = board.board_permission_to_targets.where(permission: board_permission, group: groups)
 
-    if group_permissions.size > 0
+    unless group_permissions.empty?
       group_permissions.each do |group|
         return true if group.value
       end
@@ -80,9 +77,7 @@ class User < ApplicationRecord
   end
 
   def forbidden_names_validation
-    if username.casecmp('guest') == 0
-      errors.add(:username, "cannot be 'Guest'")
-    end
+    errors.add(:username, "cannot be 'Guest'") if username.casecmp('guest').zero?
   end
 
   def invalidate_board_thread_relations

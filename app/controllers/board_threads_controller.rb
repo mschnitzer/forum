@@ -1,7 +1,7 @@
 class BoardThreadsController < ApplicationController
-  before_action :check_board, only: [:new, :create]
+  before_action :check_board, only: %i[new create]
 
-  def new 
+  def new
     if @board.to_param != params[:board]
       redirect_to board_threads_new_path(@board)
       return
@@ -14,19 +14,13 @@ class BoardThreadsController < ApplicationController
     thread = @board.threads.new(
       title: params[:title],
       user: User.current.logged_in? ? User.current : nil,
-      username: User.current.guest? ? params[:username] : nil,
+      username: User.current.guest? ? params[:username] : nil
     )
 
     authorize thread
 
     if thread.valid?
-      post = thread.posts.new(
-        user: User.current.logged_in? ? User.current : nil,
-        username: User.current.guest? ? params[:username] : nil,
-        title: params[:title],
-        message: params[:message],
-        thread_starter: true
-      )
+      post = prepare_thread_starter_post(thread)
 
       if post.valid?
         thread.save!
@@ -34,7 +28,7 @@ class BoardThreadsController < ApplicationController
         post.thread = thread
         post.save!
 
-        flash.now[:success] = "The thread has been created successfully."
+        flash.now[:success] = 'The thread has been created successfully.'
 
         redirect_to board_threads_show_path(@board, thread)
         return
@@ -70,5 +64,15 @@ class BoardThreadsController < ApplicationController
   def check_board
     @board = Board.find_by(id: params[:board].to_i)
     not_found unless @board
+  end
+
+  def prepare_thread_starter_post(thread)
+    thread.posts.new(
+      user: User.current.logged_in? ? User.current : nil,
+      username: User.current.guest? ? params[:username] : nil,
+      title: params[:title],
+      message: params[:message],
+      thread_starter: true
+    )
   end
 end

@@ -12,7 +12,7 @@ module Forum
     config.load_defaults 5.1
 
     # Application Version
-    VERSION = "1.0.0-Alpha1"
+    VERSION = '1.0.0-Alpha1'.freeze
 
     # Password Cost Factor
     BCrypt::Engine.cost = 12

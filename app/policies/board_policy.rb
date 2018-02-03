@@ -11,7 +11,7 @@ class BoardPolicy < ApplicationPolicy
     return user_permission.value if user_permission
 
     group_permissions = permissions.where(group: user.groups)
-    if group_permissions.size > 0
+    unless group_permissions.empty?
       group_permissions.each do |group|
         return true if group.value
       end

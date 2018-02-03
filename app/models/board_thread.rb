@@ -20,7 +20,7 @@ class BoardThread < ApplicationRecord
   end
 
   def to_param
-    [id, title.parameterize].join("-")
+    [id, title.parameterize].join('-')
   end
 
   private
