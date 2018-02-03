@@ -56,7 +56,7 @@ class User < ApplicationRecord
     raise "board permission '#{permission_name}' was not found in database" unless board_permission
 
     # user specific permissions
-    user_permission = board.board_permission_to_targets.find_by(permission: board_permission, user: self)
+    user_permission = board_permission_to_targets.find_by(permission: board_permission, board: board)
     return user_permission.value if user_permission
 
     # group permissions
