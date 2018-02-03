@@ -24,7 +24,8 @@ class BoardThreadsController < ApplicationController
         user: User.current.logged_in? ? User.current : nil,
         username: User.current.guest? ? params[:username] : nil,
         title: params[:title],
-        message: params[:message]
+        message: params[:message],
+        thread_starter: true
       )
 
       if post.valid?
