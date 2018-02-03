@@ -19,6 +19,10 @@ class BoardThread < ApplicationRecord
     posts.where(thread_starter: false)
   end
 
+  def to_param
+    [id, title.parameterize].join("-")
+  end
+
   private
 
   def user_id_or_username_validation

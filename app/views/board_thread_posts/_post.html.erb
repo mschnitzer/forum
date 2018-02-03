@@ -1,0 +1,16 @@
+<div id="post-<%= post.id %>" class="post<% if post.disabled %> post-disabled<% end %>">
+  <div class="post-author<% if post.disabled %> post-author-disabled<% end %>">
+    <div class="post-author-name"><%= post.author_name %></div>
+  </div>
+  <div class="post-content<% if post.disabled %> post-content-disabled<% end %>">
+    <div class="post-header">
+      <% if post.title %>
+        <div class="post-title"><%= post.title %></div>
+      <% end %>
+      <div class="post-time"><%= I18n.l post.created_at %></div>
+    </div>
+    <div class="post-content-inner">
+      <%= simple_format post.message %>
+    </div>
+  </div>
+</div>

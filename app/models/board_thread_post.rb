@@ -7,6 +7,10 @@ class BoardThreadPost < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :deleted_by, class_name: 'User', optional: true
 
+  def author_name
+    username ? username : user.username
+  end
+
   private
 
   def user_id_or_username_validation

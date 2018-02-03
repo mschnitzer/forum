@@ -12,6 +12,8 @@
     <%= render partial: 'shared/header' %>
 
     <div id="content">
+      <div id="page-title"> <%= @page_title %> </div>
+
       <% if flash[:error] %><div class="alert alert-danger"><%= flash[:error] %></div><% end %>
       <% if flash[:success] %><div class="alert alert-success"><%= flash[:success] %></div><% end %>
 

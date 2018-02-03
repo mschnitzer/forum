@@ -155,3 +155,64 @@ label {
 .thread-disabled {
   @extend .table-success;
 }
+
+#page-title {
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.post {
+  border: 1px solid #000000;
+  margin-bottom: 20pt;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.38);
+}
+
+.post-header {
+  padding: 6pt 12pt 6pt 12pt;
+  border-bottom: 1px dotted #353535;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.post-author {
+  min-height: 180px;
+  border-right: 1px solid #000000;
+  width: 220px;
+  float: left;
+  padding: 8pt;
+  background-color: #f5f5f5;
+}
+
+.post-author-name {
+  text-align: center;
+}
+
+.post-content {
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.post-content-inner {
+  font-size: 14px;
+  padding: 6pt 12pt 6pt 12pt;
+}
+
+.post-author-disabled {
+  background-color: #d2ffd4 !important;
+}
+
+.post-content-disabled {
+  background-color: #e7ffe8 !important;
+}
+
+.post-time {
+  font-size: 11px;
+}

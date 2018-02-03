@@ -17,7 +17,7 @@
         <% @threads.each do |thread| %>
           <tr class="thread<% if thread.disabled %> thread-disabled<% end %>">
             <td>
-              <%= thread.title %><br />
+              <%= link_to thread.title, board_threads_show_path(@board, thread) %><br />
               <span class="info-text thread-created-info"><%= thread.author_name %> -- <%= I18n.l thread.created_at %></span>
             </td>
             <td><span class="thread-answers-count"><%= thread.posts_without_thread_starter.count %></span></td>
