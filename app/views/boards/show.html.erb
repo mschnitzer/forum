@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <% @threads.each do |thread| %>
-          <tr>
+          <tr class="thread<% if thread.disabled %> thread-disabled<% end %>">
             <td>
               <%= thread.title %><br />
               <span class="info-text thread-created-info"><%= thread.author_name %> -- <%= I18n.l thread.created_at %></span>

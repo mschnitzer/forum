@@ -37,6 +37,42 @@ class User < ApplicationRecord
     username.casecmp('Guest') != 0
   end
 
+  def permission?(permission_name)
+    permission = Permission.find_by(name: permission_name.to_s)
+    raise "permission '#{permission_name}' was not found in database" unless permission
+
+    if permission.value_type == 'boolean'
+      groups.each do |group|
+        group_permission = group.permission_to_groups.find_by(permission_id: permission.id)
+        return true if group_permission && group_permission.value == "true"
+      end
+
+      return false
+    end
+  end
+
+  def board_permission?(board, permission_name)
+    board_permission = BoardPermission.find_by(name: permission_name.to_s)
+    raise "board permission '#{permission_name}' was not found in database" unless board_permission
+
+    # user specific permissions
+    user_permission = board.board_permission_to_targets.find_by(permission: board_permission, user: self)
+    return user_permission.value if user_permission
+
+    # group permissions
+    group_permissions = board.board_permission_to_targets.where(permission: board_permission, group: groups)
+
+    if group_permissions.size > 0
+      group_permissions.each do |group|
+        return true if group.value
+      end
+
+      return false
+    end
+
+    nil
+  end
+
   private
 
   def set_default_group

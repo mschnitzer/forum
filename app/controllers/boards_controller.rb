@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
       return
     end
 
-    @threads = @board.threads
-    @threads_count = @board.threads.count
+    @threads = policy_scope(@board.threads)
+    @threads_count = @threads.count
   end
 end
