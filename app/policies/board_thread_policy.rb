@@ -9,11 +9,11 @@ class BoardThreadPolicy < ApplicationPolicy
 
   def show?
     # deny access if user doesn't have access to the thread's board
-    return false if Pundit.policy(user, record.board).show?
+    return false unless Pundit.policy(user, record.board).show?
 
-    if thread.disabled
+    if record.disabled
       # prefer board specific permissions over global permissions
-      board_permission, _ = user.board_permission?(board, :can_see_disabled_threads)
+      board_permission = user.board_permission?(record.board, :can_see_disabled_threads)
 
       # explicitly check for `false` as `nil` means: the access to disabled threads is not allowed nor denied
       return false if board_permission == false || (board_permission.nil? && user.permission?(:can_see_disabled_threads) == false)
@@ -35,7 +35,7 @@ class BoardThreadPolicy < ApplicationPolicy
 
       # board specific permissions first, then group permissions
       board = scope.first.board
-      board_permission, _ = user.board_permission?(board, :can_see_disabled_threads)
+      board_permission = user.board_permission?(board, :can_see_disabled_threads)
       return scope.all if board_permission
 
       # group permissions
