@@ -1,0 +1,6 @@
+AllCops:
+  UseCache: true
+  CacheRootDirectory: tmp/rubocop_cache
+  MaxFilesInCache: 2000
+  Exclude:
+    - 'tmp/**/*'
