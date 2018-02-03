@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126174319) do
+ActiveRecord::Schema.define(version: 20180203122959) do
 
   create_table "board_permission_to_targets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "permission_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180126174319) do
     t.text "message", limit: 16777215
     t.boolean "thread_starter", default: false, null: false
     t.boolean "closed", default: false, null: false
+    t.boolean "disabled", default: false
     t.boolean "deleted", default: false, null: false
     t.integer "deleted_by_id"
     t.datetime "deleted_at"
