@@ -10,13 +10,17 @@ PermissionCategory.create!([
   { name: 'General' }
 ])
 Permission.create!([
-  { name: 'can_see_disabled_threads', category: PermissionCategory.find_by(name: 'Moderation'), value_type: :boolean, default_value: 'false' }
+  { name: 'can_see_disabled_threads', category: PermissionCategory.find_by(name: 'Moderation'), value_type: :boolean, default_value: 'false' },
+  { name: 'can_see_disabled_posts', category: PermissionCategory.find_by(name: 'Moderation'), value_type: :boolean, default_value: 'false' }
 ])
 PermissionToGroup.create!([
-  { permission: Permission.find_by(name: 'can_see_disabled_threads'), group: Group.find_by(name: 'Administration'), value: 'true' },
-  { permission: Permission.find_by(name: 'can_see_disabled_threads'), group: Group.find_by(name: 'Moderation'), value: 'true' }
+  { permission: Permission.find_by(name: 'can_see_disabled_threads'), group: Group.find_by(name: 'Administrators'), value: 'true' },
+  { permission: Permission.find_by(name: 'can_see_disabled_threads'), group: Group.find_by(name: 'Moderators'), value: 'true' },
+  { permission: Permission.find_by(name: 'can_see_disabled_posts'), group: Group.find_by(name: 'Administrators'), value: 'true' },
+  { permission: Permission.find_by(name: 'can_see_disabled_posts'), group: Group.find_by(name: 'Moderators'), value: 'true' }
 ])
 BoardPermission.create!([
   { name: 'can_access_board', default_value: true },
-  { name: 'can_see_disabled_threads', default_value: false }
+  { name: 'can_see_disabled_threads', default_value: false },
+  { name: 'can_see_disabled_posts', default_value: false }
 ])
