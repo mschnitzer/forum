@@ -1,0 +1,21 @@
+# general
+dist: trusty
+
+# ruby
+language: ruby
+cache: bundler
+gemfile: Gemfile
+rvm: 2.4.1
+
+# services
+services:
+  - mysql
+
+# tests
+script:
+  - "ci/test_suite.sh $TEST_SUITE"
+
+jobs:
+  include:
+    - env: TEST_SUITE=rspec
+#   - env: TEST_SUITE=rubocop
