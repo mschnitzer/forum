@@ -11,6 +11,10 @@ class BoardThreadPost < ApplicationRecord
     username ? username : user.username
   end
 
+  def formatted_author_name
+    user ? user.formatted_username : username
+  end
+
   private
 
   def user_id_or_username_validation

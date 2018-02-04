@@ -15,6 +15,11 @@ class User < ApplicationRecord
 
   @@guest = nil
 
+  def formatted_username
+    group = groups.order(priority: :desc).limit(1).first
+    sprintf(group.name_format, username).html_safe
+  end
+
   def self.current=(user)
     Thread.current[:user] = user if user.nil? || user.is_a?(User)
   end

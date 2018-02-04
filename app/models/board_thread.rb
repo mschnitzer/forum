@@ -11,6 +11,10 @@ class BoardThread < ApplicationRecord
     username ? username : user.username
   end
 
+  def formatted_author_name
+    user ? user.formatted_username : username
+  end
+
   def last_answer
     posts_without_thread_starter.order(id: :desc).limit(1).first
   end

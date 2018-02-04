@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203122959) do
+ActiveRecord::Schema.define(version: 20180204222850) do
 
   create_table "board_permission_to_targets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "permission_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180203122959) do
     t.string "name_format", default: "%s"
     t.boolean "default_group", default: false, null: false
     t.boolean "guest_group", default: false, null: false
+    t.integer "priority", default: 0, null: false
   end
 
   create_table "permission_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

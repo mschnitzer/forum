@@ -1,6 +1,6 @@
 <div id="post-<%= post.id %>" class="post<% if post.disabled %> post-disabled<% end %>">
   <div class="post-author<% if post.disabled %> post-author-disabled<% end %>">
-    <div class="post-author-name"><%= post.author_name %></div>
+    <div class="post-author-name"><%= post.formatted_author_name %></div>
   </div>
   <div class="post-content<% if post.disabled %> post-content-disabled<% end %>">
     <div class="post-header">
