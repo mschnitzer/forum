@@ -4,6 +4,7 @@
     <span class="item"><%= link_to t(:ucp_title_logout), users_logout_path, data: { confirm: t(:ucp_logout_confirmation) } %></span>
   <% else %>
     <span class="item"><%= link_to t(:ucp_title_register), users_new_path %></span>
+    <span class="item"><%= link_to t(:ucp_title_login), users_login_path %></span>
   <% end %>
 </div>
 

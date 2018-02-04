@@ -2,10 +2,12 @@ en:
   # page titles
   title_register_account: 'Register Account'
   title_board_thread_new: 'New thread in board: %{board}'
+  title_login: 'Log In'
 
   # buttons
   button_create_account: 'Create Account'
   button_thread_create: 'Create Thread'
+  button_login: 'Log In'
 
   # form fields
   field_username: 'Username'
@@ -20,12 +22,15 @@ en:
   flash_account_registered_successfully: 'Your account has been created successfully.'
   flash_account_registration_error: 'Could not create new user account: %{error}'
   flash_board_thread_create_error: 'Could not create new thread: %{error}'
+  flash_login_successfully: "You've been logged in successfully."
+  flash_login_failed: "You've entered invalid credentials."
 
   # user cp navigation
   ucp_logged_in_as: 'Logged in as %{username}.'
   ucp_title_register: 'Create Account'
   ucp_title_logout: 'Log Out'
   ucp_logout_confirmation: 'Do you really want to log out?'
+  ucp_title_login: 'Log In'
 
   # users
   users_logout_successfully: "You've been logged out successfully."

@@ -21,6 +21,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    permission_denied if User.current.logged_in?
+  end
+
+  def login_perform
+    permission_denied if User.current.logged_in?
+
+    user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
+
+    if user
+      session[:user_id] = user.id
+
+      flash[:success] = I18n.t :flash_login_successfully
+      redirect_to root_path
+    else
+      flash[:error] = I18n.t :flash_login_failed
+      render :login
+    end
+  end
+
   def logout
     permission_denied if User.current.guest?
 

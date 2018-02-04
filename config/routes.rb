@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/users/register', to: 'users#new', as: :users_new
   post '/users/register', to: 'users#register'
   get '/users/logout', to: 'users#logout'
+  get '/users/login', to: 'users#login'
+  post '/users/login', to: 'users#login_perform', as: :users_login_perform
 end
