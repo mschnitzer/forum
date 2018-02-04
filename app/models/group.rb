@@ -13,6 +13,6 @@ class Group < ApplicationRecord
   private
 
   def name_format_validation
-    errors.add(:name_format, 'must contain %s') unless name_format && name_format.index('%s')
+    errors.add(:name_format, 'must contain %s') unless name_format&.index('%s')
   end
 end

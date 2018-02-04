@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   def formatted_username
     group = groups.order(priority: :desc).limit(1).first
-    sprintf(group.name_format, username).html_safe
+    format(group.name_format, username).html_safe
   end
 
   def self.current=(user)
