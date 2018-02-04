@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
     reset_session
 
-    flash[:success] = I18n.t :users_logout_successfully
+    flash[:success] = I18n.t :flash_logout_successfully
     redirect_to root_path
   end
 end
