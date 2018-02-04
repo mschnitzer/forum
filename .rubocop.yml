@@ -23,3 +23,12 @@ Metrics/MethodLength:
 
 Style/ClassVars:
   Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - 'describe'
+    - 'context'
+    - 'permissions'
+
+Style/BlockComments:
+  Enabled: false

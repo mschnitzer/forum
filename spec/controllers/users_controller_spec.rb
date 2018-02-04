@@ -5,7 +5,7 @@ describe UsersController, type: :request do
     context 'success' do
       before do
         post users_register_path, params: { username: username, email: 'example@example.de', email_confirmation: 'example@example.de',
-          password: 'test', password_confirmation: 'test' }
+                                            password: 'test', password_confirmation: 'test' }
       end
 
       it 'has created a new user' do
