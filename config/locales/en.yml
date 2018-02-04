@@ -24,6 +24,11 @@ en:
   # user cp navigation
   ucp_logged_in_as: 'Logged in as %{username}.'
   ucp_title_register: 'Create Account'
+  ucp_title_logout: 'Log Out'
+  ucp_logout_confirmation: 'Do you really want to log out?'
+
+  # users
+  users_logout_successfully: "You've been logged out successfully."
 
   # general
   permission_denied_error: 'You have insufficient permission to access that resource.'

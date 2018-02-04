@@ -21,4 +21,16 @@ describe UsersController, type: :request do
       end
     end
   end
+
+  describe '#logout' do
+    context 'as guest' do
+      before do
+        get users_logout_path
+      end
+
+      it 'cannot be accessed' do
+        expect(response.code).to eq('403')
+      end
+    end
+  end
 end

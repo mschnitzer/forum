@@ -20,4 +20,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def logout
+    permission_denied if User.current.guest?
+
+    reset_session
+
+    flash[:success] = I18n.t :users_logout_successfully
+    redirect_to root_path
+  end
 end
