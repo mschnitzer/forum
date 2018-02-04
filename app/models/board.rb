@@ -9,7 +9,7 @@ class Board < ApplicationRecord
   has_many :board_permission_to_targets
 
   def boards?
-    boards.count > 0
+    boards.count.positive?
   end
 
   def to_param

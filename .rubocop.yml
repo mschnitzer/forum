@@ -2,6 +2,7 @@ AllCops:
   UseCache: true
   CacheRootDirectory: tmp/rubocop_cache
   MaxFilesInCache: 2000
+  TargetRubyVersion: 2.4.1
   Exclude:
     - 'tmp/**/*'
     - 'db/**/*'
@@ -31,4 +32,10 @@ Metrics/BlockLength:
     - 'permissions'
 
 Style/BlockComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
   Enabled: false
