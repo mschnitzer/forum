@@ -8,6 +8,8 @@ class BoardThreadsController < ApplicationController
     end
 
     authorize @board.threads.new
+
+    @breadcrumbs.push([I18n.t(:breadcrumb_board_threads_new), board_threads_new_path(@board)])
   end
 
   def create
@@ -39,6 +41,7 @@ class BoardThreadsController < ApplicationController
       flash.now[:error] = I18n.t :flash_board_thread_create_error, error: thread.errors.full_messages.to_sentence
     end
 
+    @breadcrumbs.push([I18n.t(:breadcrumb_board_threads_new), board_threads_new_path(@board)])
     render :new
   end
 
@@ -57,6 +60,9 @@ class BoardThreadsController < ApplicationController
 
     @page_title = @thread.title
     @posts = policy_scope(@thread.posts)
+
+    @breadcrumbs.push([I18n.t(:breadcrumb_boards_show, board_name: @board.name), boards_show_path(@board)])
+    @breadcrumbs.push([I18n.t(:breadcrumb_board_threads_show, thread_title: @thread.title), board_threads_show_path(@board, @thread)])
   end
 
   private
@@ -64,6 +70,8 @@ class BoardThreadsController < ApplicationController
   def check_board
     @board = Board.find_by(id: params[:board].to_i)
     not_found unless @board
+
+    @breadcrumbs.push([I18n.t(:breadcrumb_boards_show, board_name: @board.name), boards_show_path(@board)])
   end
 
   def prepare_thread_starter_post(thread)

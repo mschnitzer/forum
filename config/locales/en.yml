@@ -26,6 +26,14 @@ en:
   flash_login_failed: "You've entered invalid credentials."
   flash_logout_successfully: "You've been logged out successfully."
 
+  # breadcrumbs
+  breadcrumb_home: 'Home'
+  breadcrumb_boards_show: '%{board_name}'
+  breadcrumb_boards_new: 'New Thread'
+  breadcrumb_board_threads_show: '%{thread_title}'
+  breadcrumb_users_login: 'Log In'
+  breadcrumb_users_new: 'Create Account'
+
   # user cp navigation
   ucp_logged_in_as: 'Logged in as %{username}.'
   ucp_title_register: 'Create Account'

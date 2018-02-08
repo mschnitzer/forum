@@ -216,3 +216,19 @@ label {
 .post-time {
   font-size: 11px;
 }
+
+#breadcrumbs {
+  background-color: #efefef;
+  padding: 5pt 20pt 5pt 20pt;
+  font-size: 13px;
+
+  a:link, a:visited {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  a:active, a:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+}

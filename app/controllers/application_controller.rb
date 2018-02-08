@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   around_action :catch_halt
   before_action :set_user
+  before_action :init_breadcrumbs
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -12,7 +13,15 @@ class ApplicationController < ActionController::Base
     User.current
   end
 
+  def breadcrumb_add(link_name, link_path)
+    @breadcrumbs.push([link_name, link_path])
+  end
+
   private
+
+  def init_breadcrumbs
+    @breadcrumbs = [[I18n.t(:breadcrumb_home), root_path]]
+  end
 
   def user_not_authorized
     catch :halt do

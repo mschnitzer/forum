@@ -11,3 +11,12 @@
 <div id="header">
   <%= link_to 'Open Source Forum', root_path %>
 </div>
+
+<div id="breadcrumbs">
+  <% @breadcrumbs.each_with_index do |breadcrumb, index| %>
+    <%= link_to breadcrumb[0], breadcrumb[1] %>
+    <% if @breadcrumbs.size != index+1 %>
+      &raquo;
+    <% end %>
+  <% end %>
+</div>

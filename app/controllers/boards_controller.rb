@@ -14,6 +14,8 @@ class BoardsController < ApplicationController
       return
     end
 
+    @breadcrumbs.push([I18n.t(:breadcrumb_boards_show, board_name: @board.name), boards_show_path(@board)])
+
     @threads = policy_scope(@board.threads)
     @threads_count = @threads.count
   end

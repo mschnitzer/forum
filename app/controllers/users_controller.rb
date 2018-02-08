@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  def new; end
+  def new
+    @breadcrumbs.push([I18n.t(:breadcrumb_users_new), users_new_path])
+  end
 
   def register
+    @breadcrumbs.push([I18n.t(:breadcrumb_users_new), users_new_path])
     user = User.new(
       username:              params[:username],
       email:                 params[:email],
@@ -23,12 +26,14 @@ class UsersController < ApplicationController
 
   def login
     permission_denied if User.current.logged_in?
+    @breadcrumbs.push([I18n.t(:breadcrumb_users_login), users_login_path])
   end
 
   def login_perform
     permission_denied if User.current.logged_in?
 
     user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
+    @breadcrumbs.push([I18n.t(:breadcrumb_users_login), users_login_path])
 
     if user
       session[:user_id] = user.id
