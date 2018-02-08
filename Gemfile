@@ -36,6 +36,8 @@ gem 'sprockets-rails', '~> 3.2.1'
 gem 'jquery-rails'
 # permission handling
 gem 'pundit'
+# font awesome
+gem 'font-awesome-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
