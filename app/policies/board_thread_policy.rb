@@ -1,6 +1,6 @@
 class BoardThreadPolicy < ApplicationPolicy
   def new?
-    Pundit.policy(user, record.board).show?
+    Pundit.policy(user, record.board).show? && !record.board.category
   end
 
   def create?
