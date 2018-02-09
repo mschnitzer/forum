@@ -8,6 +8,7 @@ en:
   button_create_account: 'Create Account'
   button_thread_create: 'Create Thread'
   button_login: 'Log In'
+  button_back: 'Back'
 
   # form fields
   field_username: 'Username'
@@ -50,3 +51,4 @@ en:
   thread_title: 'Title'
   thread_last_answer: 'Last Answer'
   thread_answers: 'Answers'
+  thread_new: 'New Thread'

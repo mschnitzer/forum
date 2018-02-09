@@ -1,3 +1,8 @@
+<% if policy(@board.threads.new).new? %>
+  <%= render partial: 'new_thread_button', locals: { board: @board } %>
+  <br />
+<% end %>
+
 <% if @threads.empty? %>
   <div class="alert alert-info"> There are no topics created in this board. </div>
 <% else %>
@@ -27,4 +32,9 @@
       </tbody>
     </table>
   </div>
+<% end %>
+
+<% if policy(@board.threads.new).new? %>
+  <br />
+  <%= render partial: 'new_thread_button', locals: { board: @board } %>
 <% end %>
