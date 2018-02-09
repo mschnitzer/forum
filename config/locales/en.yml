@@ -33,6 +33,7 @@ en:
   breadcrumb_board_threads_show: '%{thread_title}'
   breadcrumb_users_login: 'Log In'
   breadcrumb_users_new: 'Create Account'
+  breadcrumb_board_threads_new: 'New Thread'
 
   # user cp navigation
   ucp_logged_in_as: 'Logged in as %{username}.'
