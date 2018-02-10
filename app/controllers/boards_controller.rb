@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
       return
     end
 
+    @page_title = @board.to_s
     @breadcrumbs.push([I18n.t(:breadcrumb_boards_show, board_name: @board.name), boards_show_path(@board)])
 
     @threads = policy_scope(@board.threads)

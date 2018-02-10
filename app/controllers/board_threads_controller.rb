@@ -9,6 +9,7 @@ class BoardThreadsController < ApplicationController
 
     authorize @board.threads.new
 
+    @page_title = I18n.t :title_board_thread_new, board: @board
     @breadcrumbs.push([I18n.t(:breadcrumb_board_threads_new), board_threads_new_path(@board)])
   end
 

@@ -15,4 +15,8 @@ class Board < ApplicationRecord
   def to_param
     [id, name.parameterize].join('-')
   end
+
+  def to_s
+    name
+  end
 end
