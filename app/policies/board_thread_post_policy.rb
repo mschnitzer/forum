@@ -14,6 +14,17 @@ class BoardThreadPostPolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    # deny access if user doesn't have access to the post's thread
+    return false unless Pundit.policy(user, record.thread).show?
+
+    true
+  end
+
+  def create?
+    new?
+  end
+
   class Scope < Scope
     attr_reader :user, :scope
 

@@ -3,12 +3,14 @@ en:
   title_register_account: 'Register Account'
   title_board_thread_new: 'New thread in board: %{board}'
   title_login: 'Log In'
+  title_board_thread_post_new: 'New post'
 
   # buttons
   button_create_account: 'Create Account'
   button_thread_create: 'Create Thread'
   button_login: 'Log In'
   button_back: 'Back'
+  button_thread_post_create: 'Create Post'
 
   # form fields
   field_username: 'Username'
@@ -26,6 +28,8 @@ en:
   flash_login_successfully: "You've been logged in successfully."
   flash_login_failed: "You've entered invalid credentials."
   flash_logout_successfully: "You've been logged out successfully."
+  flash_board_thread_post_create_error: 'Could not create new post: %{error}'
+  flash_board_thread_post_create_success: 'Post was created successfully.'
 
   # breadcrumbs
   breadcrumb_home: 'Home'
@@ -52,3 +56,6 @@ en:
   thread_last_answer: 'Last Answer'
   thread_answers: 'Answers'
   thread_new: 'New Thread'
+
+  # thread posts
+  board_thread_posts_new: 'New post'

@@ -1,3 +1,7 @@
 <% @posts.each do |post| %>
   <%= render partial: 'board_thread_posts/post', locals: { post: post } %>
 <% end %>
+
+<% if policy(@thread.posts.new).new? %>
+  <%= render partial: 'board_thread_posts/new', locals: { thread: @thread } %>
+<% end %>
