@@ -216,6 +216,25 @@ label {
   font-size: 11px;
 }
 
+.post-header-details {
+  float: left;
+}
+
+.post-header-counter {
+  float: right;
+}
+
+.post-counter {
+  @extend .badge;
+  @extend .badge-pill;
+  @extend .badge-dark;
+}
+
+.post-counter a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .board-icon {
   color: #002768;
 }

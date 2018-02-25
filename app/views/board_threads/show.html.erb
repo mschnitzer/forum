@@ -1,5 +1,5 @@
-<% @posts.each do |post| %>
-  <%= render partial: 'board_thread_posts/post', locals: { post: post } %>
+<% @posts.each_with_index do |post, index| %>
+  <%= render partial: 'board_thread_posts/post', locals: { post: post, post_number: index+1 } %>
 <% end %>
 
 <% if policy(@thread.posts.new).new? %>
